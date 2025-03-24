@@ -110,7 +110,7 @@ connection {
 
 ## Cleanup
 To destroy the resources created by this project, run:
+**Remove the lifecycle block from the resource group if you want the full cleanup**
 ```bash
 terraform destroy
 ```
-**Remove the lifecycle block from the resource group if you want the full cleanup**
