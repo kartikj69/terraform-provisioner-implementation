@@ -92,7 +92,7 @@ connection {
   type        = "ssh"
   user        = "azureuser"
   private_key = file("~/.ssh/id_rsa") (or use password)
-  host        = azurerm_public_ip.example.ip_address
+  host        = azurerm_public_ip.example.ip_address (use self.ip_address if you are using the provisioner inside the target resource block)
 }
 ```
 
