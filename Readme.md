@@ -86,13 +86,13 @@ provisioner "local-exec" {
 
 ## Example Connection Block
 To enable SSH access for the `remote-exec` and `file` provisioners, use the following connection block:
-
+**Use self.ip_address if you are using the provisioner inside the target resource block**
 ```hcl
 connection {
   type        = "ssh"
   user        = "azureuser"
   private_key = file("~/.ssh/id_rsa") (or use password)
-  host        = azurerm_public_ip.example.ip_address (use self.ip_address if you are using the provisioner inside the target resource block)
+  host        = azurerm_public_ip.example.ip_address 
 }
 ```
 
