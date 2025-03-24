@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome</title>
+    <style>
+        :root {
+            --bg-primary: #121212;
+            --bg-secondary: #1e1e1e;
+            --text-primary: #f0f0f0;
+            --text-secondary: #b0b0b0;
+            --accent: #7e57c2;
+            --accent-hover: #9575cd;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+            background-color: var(--bg-secondary);
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            transform: translateY(0);
+            transition: transform 0.3s ease;
+        }
+        
+        .container:hover {
+            transform: translateY(-5px);
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(90deg, var(--accent), #aa88ff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-align: center;
+        }
+        
+        p {
+            margin-bottom: 1.5rem;
+            color: var(--text-secondary);
+        }
+        
+        .highlight {
+            color: var(--accent);
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--accent);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            margin-top: 1rem;
+        }
+        
+        .btn:hover {
+            background-color: var(--accent-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(126, 87, 194, 0.4);
+        }
+        
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .feature {
+            padding: 1.5rem;
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+        
+        .feature:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            transform: translateY(-5px);
+        }
+        
+        .feature h3 {
+            margin-bottom: 0.5rem;
+            color: var(--accent);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Terraform Azure VM Deployment</h1>
+        <p>Welcome to your newly provisioned Azure Virtual Machine! This server is running <span class="highlight">NGINX</span> and was deployed using Terraform infrastructure as code.</p>
+        
+        <p>This page confirms that your multi-stage provisioning process completed successfully.</p>
+        
+        <div class="features">
+            <div class="feature">
+                <h3>Infrastructure as Code</h3>
+                <p>This environment was created with Terraform, enabling repeatable and version-controlled deployments.</p>
+            </div>
+            <div class="feature">
+                <h3>Multi-Stage Provisioners</h3>
+                <p>Your VM was configured using local-exec, remote-exec, and file provisioners in sequence.</p>
+            </div>
+            <div class="feature">
+                <h3>NGINX Web Server</h3>
+                <p>This page is served by NGINX, automatically installed and configured during provisioning.</p>
+            </div>
+        </div>
+        
+        <div style="text-align: center;">
+            <button class="btn">Deployment Success!</button>
+        </div>
+    </div>
+
+    <script>
+        document.querySelector('.btn').addEventListener('click', function() {
+            alert('Your Azure VM deployment is complete and NGINX is running successfully!');
+        });
+    </script>
+</body>
+</html>
+
+
+terraform plan -destroy -target=null_resource.provisioner -target=module.network -target=module.public_ip -target=module.NIC -target=module.NSG -target=module.connection_nsg_nic -target=module.VM -target=null_resource.provisioner2
