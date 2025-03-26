@@ -34,7 +34,6 @@ module "NSG" {
   location            = azurerm_resource_group.rg.location
   NSG_name            = var.NSG_name
   security_rule       = var.security_rule
-  security_rule2      = var.security_rule2
   depends_on          = [azurerm_resource_group.rg]
 }
 module "connection_nsg_nic" {

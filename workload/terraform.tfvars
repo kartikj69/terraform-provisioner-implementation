@@ -14,28 +14,28 @@ NIC = {
   ip_conf_name                  = "ipconf-VM"
   private_ip_address_allocation = "Dynamic"
 }
-security_rule = {
-  name                       = "allow-ssh"
-  priority                   = 1001
-  direction                  = "Inbound"
-  access                     = "Allow"
-  protocol                   = "*"
-  source_port_range          = "*"
-  destination_port_range     = "22"
-  source_address_prefix      = "*"
-  destination_address_prefix = "*"
-}
-security_rule2 = {
-  name                       = "allow-http"
-  priority                   = 100
-  direction                  = "Inbound"
-  access                     = "Allow"
-  protocol                   = "*"
-  source_port_range          = "*"
-  destination_port_range     = "80"
-  source_address_prefix      = "*"
-  destination_address_prefix = "*"
-}
+security_rule = [{
+      name                       = "rule1"
+      priority                   = 100
+      direction                  = "Inbound"
+      access                     = "Allow"
+      protocol                   = "Tcp"
+      source_port_range          = "*"
+      destination_port_range     = "22"
+      source_address_prefix      = "*"
+      destination_address_prefix = "*"
+    },
+    {
+      name                       = "rule2"
+      priority                   = 200
+      direction                  = "Inbound"
+      access                     = "Allow"
+      protocol                   = "Tcp"
+      source_port_range          = "*"
+      destination_port_range     = "80"
+      source_address_prefix      = "*"
+      destination_address_prefix = "*"
+    }]
 VM = {
   name                 = "VM-1"
   size                 = "Standard_B2as_v2"

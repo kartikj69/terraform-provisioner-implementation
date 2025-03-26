@@ -37,7 +37,7 @@ variable "NSG_name" {
 
 variable "security_rule" {
   description = "Security rule configuration"
-  type = object({
+  type = list(object({
     name                       = string
     priority                   = number
     direction                  = string
@@ -47,21 +47,7 @@ variable "security_rule" {
     destination_port_range     = string
     source_address_prefix      = string
     destination_address_prefix = string
-  })
-}
-variable "security_rule2" {
-  description = "Security rule configuration"
-  type = object({
-    name                       = string
-    priority                   = number
-    direction                  = string
-    access                     = string
-    protocol                   = string
-    source_port_range          = string
-    destination_port_range     = string
-    source_address_prefix      = string
-    destination_address_prefix = string
-  })
+  }))
 }
 variable "VM" {
   description = "Virtual Machine configuration"
