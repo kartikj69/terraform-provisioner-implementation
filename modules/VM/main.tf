@@ -36,9 +36,12 @@ resource "azurerm_linux_virtual_machine" "VM" {
     "sudo apt-get update",
     "sudo apt-get install -y nginx",
     # Create a sample welcome page
-    "sudo tee /home/azureuser/index.html <<EOF",
     "sudo systemctl start nginx",
     "sudo systemctl enable nginx",
+    "sudo mv /home/azureuser/index.html /var/www/html/",
+    "sudo chown www-data:www-data /var/www/html/index.html",
+    "sudo chmod 644 /var/www/html/index.html",
+    "sudo systemctl restart nginx",
     ]
   }
 }
